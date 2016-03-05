@@ -7,7 +7,15 @@ use Mojo::JSON;
 use Path::Tiny;
 use UUID::Tiny;
 
-app->defaults( %{ plugin "Config" => { default => { log_dir => "process_id", } } } );
+app->defaults(
+    %{ plugin "Config" => {
+            default => {
+                log_dir => "process_id",
+                secrets => [ "2016-03-05 18:04:46 Asia/Seoul" ],
+            }
+        }
+    }
+);
 
 my $LOG_DIR = app->config->{log_dir};
 app->log->info("log dir: $LOG_DIR");
@@ -74,6 +82,7 @@ post "/log" => [ format => ["json"] ] => sub {
     $c->respond_to( json => { json => { ret => 1, }, }, );
 };
 
+app->secrets( app->config->{secrets} );
 app->start;
 
 __DATA__
