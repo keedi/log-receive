@@ -28,7 +28,7 @@ post "/id" => [ format => ["json"] ] => sub {
     );
 };
 
-post "/log" => sub {
+post "/log" => [ format => ["json"] ] => sub {
     my $c = shift;
 
     my $json = $c->req->json;
@@ -37,17 +37,41 @@ post "/log" => sub {
     my $hostname = $json->{"hostname"};
     my $data     = $json->{"data"};
 
+    my $validation = $c->validation;
+    $validation->input($json);
+    unless ( $validation->has_data ) {
+        $c->respond_to(
+            json => {
+                json => {
+                    ret    => 0,
+                    reason => "http body json is required",
+                },
+            },
+        );
+    }
+
+    my $hex = qr/[A-Za-z0-9]/;
+    $validation->required("id")->like(qr/^$hex{8}-$hex{4}-$hex{4}-$hex{4}-$hex{12}$/);
+    $validation->required("hostname");
+    $validation->required("data");
+
+    if ( $validation->has_error ) {
+        $c->respond_to(
+            json => {
+                json => {
+                    ret    => 0,
+                    reason => "invalid parameter: " . join( ", ", @{ $validation->failed } ),
+                },
+            },
+        );
+        return;
+    }
+
     my $file = path("$LOG_DIR/$id/$hostname");
     $file->touchpath;
     $file->append_utf8($data);
 
-    $c->respond_to(
-        json => {
-            json => {
-                ret => 1,
-            },
-        },
-    );
+    $c->respond_to( json => { json => { ret => 1, }, }, );
 };
 
 app->start;
