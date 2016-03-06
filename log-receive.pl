@@ -50,7 +50,8 @@ post "/log" => [ format => ["json"] ] => sub {
     unless ( $validation->has_data ) {
         $c->respond_to(
             json => {
-                json => {
+                status => 400, # bad request
+                json   => {
                     ret    => 0,
                     reason => "http body json is required",
                 },
@@ -66,7 +67,8 @@ post "/log" => [ format => ["json"] ] => sub {
     if ( $validation->has_error ) {
         $c->respond_to(
             json => {
-                json => {
+                status => 400, # bad request
+                json   => {
                     ret    => 0,
                     reason => "invalid parameter: " . join( ", ", @{ $validation->failed } ),
                 },
