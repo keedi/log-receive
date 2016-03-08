@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+// Mixins
+// @import "../vendor/Materialize/sass/components/prefixer";
+@import "../vendor/Materialize/sass/components/mixins";
+@import "../vendor/Materialize/sass/components/color";
+
+// Variables;
+@import "../vendor/Materialize/sass/components/variables";
+
+// Reset
+@import "../vendor/Materialize/sass/components/normalize";
+
+// components
+@import "../vendor/Materialize/sass/components/global";
+@import "../vendor/Materialize/sass/components/icons-material-design";
+@import "../vendor/Materialize/sass/components/grid";
+@import "../vendor/Materialize/sass/components/navbar";
+@import "../vendor/Materialize/sass/components/roboto";
+@import "../vendor/Materialize/sass/components/typography";
+@import "../vendor/Materialize/sass/components/cards";
+@import "../vendor/Materialize/sass/components/toast";
+@import "../vendor/Materialize/sass/components/tabs";
+@import "../vendor/Materialize/sass/components/tooltip";
+@import "../vendor/Materialize/sass/components/buttons";
+@import "../vendor/Materialize/sass/components/dropdown";
+@import "../vendor/Materialize/sass/components/waves";
+@import "../vendor/Materialize/sass/components/modal";
+@import "../vendor/Materialize/sass/components/collapsible";
+@import "../vendor/Materialize/sass/components/chips";
+@import "../vendor/Materialize/sass/components/materialbox";
+@import "../vendor/Materialize/sass/components/form";
+@import "../vendor/Materialize/sass/components/table_of_contents";
+@import "../vendor/Materialize/sass/components/sideNav";
+@import "../vendor/Materialize/sass/components/preloader";
+@import "../vendor/Materialize/sass/components/slider";
+@import "../vendor/Materialize/sass/components/carousel";
+@import "../vendor/Materialize/sass/components/date_picker/default.scss";
+@import "../vendor/Materialize/sass/components/date_picker/default.date.scss";
+@import "../vendor/Materialize/sass/components/date_picker/default.time.scss";
+
+// custom css for my web
+//...
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+
+.icon-block {
+    padding: 0 15px;
+}
+.icon-block .material-icons {
+    font-size: inherit;
+}

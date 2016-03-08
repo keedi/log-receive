@@ -6,3 +6,9 @@ log/
 
 # installed by bower
 assets/vendor
+
+# sass cache
+assets/sass/.sass-cache
+
+# Mojolicious::Plugin::AssetPack result
+public/packed/
