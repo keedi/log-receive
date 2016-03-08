@@ -1,1 +1,5 @@
+# editor swap file
 *.swp
+
+# installed by bower
+assets/vendor
