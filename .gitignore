@@ -1,5 +1,8 @@
 # editor swap file
 *.swp
 
+# mojolicious logo directory
+log/
+
 # installed by bower
 assets/vendor
